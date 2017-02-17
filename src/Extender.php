@@ -54,6 +54,9 @@ class Extender implements PluginInterface, EventSubscriberInterface
     {
         $extenderManager = new ExtenderManager();
         $directory = realpath(__DIR__.'/../../../../');
+        if(!$directory) {
+          return;
+        }
         $extenderManager->processProjectPackages($directory);
 
         if (is_dir($directory.'/vendor/drupal/console')) {
